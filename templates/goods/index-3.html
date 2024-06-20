@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syrian Transport Company</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+  .error-message {
+  color: rgb(252, 3, 3);
+}
+</style>
+</head>
+<body>
+  <main>
+    <form action="{% url 'index-3'%}" method="post">
+      <div class="container">
+        {%csrf_token %}
+        <h4>Enter the required information to know the goods loaded into the truck, their maximum value, and the shortest route between the addresses.
+        </h4>
+      
+        <div>
+            <label for="num_trucks">Number of Trucks:</label>
+            <input
+              type="number"
+              id="num_trucks"
+              name="num_trucks"
+              min="1"
+              value="2"
+              class="form-control"
+            />
+          </div>
+          <div class="error-message"> {{ form.num_trucks.errors }}</div>
+
+          <div>
+            <label for="truck_capacities"
+              >Truck Capacities (comma-separated):</label
+            >
+            <input
+              type="text"
+              id="truck_capacities"
+              name="truck_capacities"
+              placeholder="15,30"
+              class="form-control"
+            />
+          </div>
+          <div class="error-message">  {{ form.truck_capacities.errors }}</div>
+          
+          <div>
+            <label for="num_goods">Number of goods:</label>
+            <input
+              type="number"
+              id="num_goods"
+              name="num_goods"
+              min="1"
+              value="2"
+              class="form-control"
+            />
+          </div>
+          <div class="error-message">{{ form.num_goods.errors }}</div>
+          
+          <div class="input-group">
+            <label for="items_value">Items values:</label>
+            <input
+            type="text"
+            id="items_value"
+            name="items_value"
+            placeholder="3 4 5 6"
+            class="form-control"/>
+          </div>
+          <div class="error-message"> {{ form.items_value.errors }}</div>
+          
+          <div class="input-group">
+            <label for="items_weight">Items weight:</label>
+            <input
+            type="text"
+            id="items_weight"
+            name="items_weight"
+            placeholder="2 3 4 5"
+            class="form-control"/>
+          </div>
+          <div class="error-message">{{ form.items_weight.errors }}</div>
+          
+          <div>
+            <label for="num_addresses">Number of addresses:</label>
+            <input
+              type="number"
+              id="num_addresses"
+              name="number_addresses"
+              min="1"
+              value="2"
+              class="form-control"
+            />
+          </div>
+          <div class="error-message">{{ form.number_addresses.errors }}</div>
+          
+          <div class="input-group">
+            <label for="dist_addres">The time between each two addresses:</label>
+            <input
+            type="text"
+            id="time_addresses"
+            name="time_addresses"
+            placeholder="0->1=2,0->2=2"
+            class="form-control"/>
+          </div>
+          <div class="error-message">{{ form.time_addresses.errors }}</div>
+          
+          <div class="button-group">
+            <button type="submit" class="btn btn-slide-2" name="Run ">Run</button>
+            <button type="submit" class="btn btn-slide-2" name="Back "  formaction="{% url 'index-2'%}" >Back</button>
+         </div>
+         
+      </div>  
+    </form>
+  </main> 
+</body>
+</html>
